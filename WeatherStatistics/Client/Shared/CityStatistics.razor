@@ -47,13 +47,13 @@
 
 @code {
     private List<CityWStat> CityStats = new List<CityWStat>();
-    private CityWStat CurrentCity = null!;
+    private CityWStat CurrentCity = new CityWStat();
 
     public string url { get; set; } = "first-city";
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        CityStats = StatService.GetAllCitiesStats();
-        CurrentCity = StatService.GetCityWStatByUrl(url);
+        CityStats = await StatService.GetAllCitiesStats();
+        CurrentCity = await StatService.GetCityWStatByUrl(url);
     }
 }

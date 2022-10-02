@@ -1,24 +1,26 @@
-﻿using WeatherStatistics.Shared;
+﻿using System.Net.Http.Json;
+using WeatherStatistics.Shared;
 
 namespace WeatherStatistics.Client.Services
 {
     public class WeatherStatService : IWeatherStatService
     {
+        private readonly HttpClient _http;
 
-        public List<CityWStat> CityStats { get; set; } = new List<CityWStat>
+        public WeatherStatService(HttpClient http)
         {
-            new CityWStat {Url = "first-city", Name = "Moscow", Latitude = 55.752, Longitude = 37.616,
-            CStatus = CityStatus.CREATED,
-            MinTemperature = -40, MaxTemperature = 32, AvgTemperature = 3}
-        };
-        public List<CityWStat> GetAllCitiesStats()
-        {
-            return CityStats;
+            _http = http;
         }
 
-        public CityWStat GetCityWStatByUrl(string url)
+        public async Task<List<CityWStat>> GetAllCitiesStats()
         {
-            return CityStats.FirstOrDefault(c => c.Url.ToLower().Equals(url.ToLower()));
+            return await _http.GetFromJsonAsync<List<CityWStat>>("api/WeatherStat");
+        }
+
+        public async Task<CityWStat> GetCityWStatByUrl(string url)
+        {
+            var city_stat = await _http.GetFromJsonAsync<CityWStat>($"api/WeatherStat/{url}");
+            return city_stat;
         }
     }
 }

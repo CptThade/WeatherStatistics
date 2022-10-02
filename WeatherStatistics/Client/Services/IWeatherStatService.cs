@@ -4,9 +4,9 @@ namespace WeatherStatistics.Client.Services
 {
     interface IWeatherStatService
     {
-        List<CityWStat> GetAllCitiesStats();
+        Task<List<CityWStat>> GetAllCitiesStats();
 
-        CityWStat GetCityWStatByUrl(string url);
+        Task<CityWStat> GetCityWStatByUrl(string url);
 
     }
 }
