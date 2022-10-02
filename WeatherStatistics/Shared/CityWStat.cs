@@ -9,7 +9,8 @@
     public class CityWStat
     {
         public int Id { get; set; }
-        public string Name { get; set; } = null!;
+        public string? Url { get; set; }
+        public string? Name { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public CityStatus CStatus { get; set; }
