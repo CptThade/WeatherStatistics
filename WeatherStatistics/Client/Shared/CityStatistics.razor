@@ -1,0 +1,69 @@
+﻿@using WeatherStatistics.Shared
+
+<select>
+	@foreach (var city in CityStats){
+		<option>
+			@city.Name
+		</option>
+	}
+</select>
+
+@foreach (var city in CityStats)
+{
+    <div>
+        @city.Name
+        @city.MinTemperature
+        @city.MaxTemperature
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Период</th>
+            <th>Минимальная температура</th>
+            <th>Максимальная температура</th>
+            <th>Средняя температура</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        @foreach (var city in CityStats)
+        {
+
+                <td>@city.TimeStamp.ToString()</td>
+                <td>@city.MinTemperature</td>
+                <td>@city.MaxTemperature</td>
+                <td>@city.AvgTemperature</td>
+            
+        }
+        </tr>
+
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Текущая температура</th>
+        </tr>
+    </thead>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>График за месяц</th>
+        </tr>
+    </thead>
+</table>
+
+@code {
+	public List<CityWStat> CityStats { get; set; } = new List<CityWStat>()
+	{
+		new CityWStat {Name = "Moscow", Latitude = 55.752, Longitude = 37.616,
+        CStatus = CityStatus.CREATED,
+        MinTemperature = -46, MaxTemperature = 32, AvgTemperature = 3}
+	};
+
+}
