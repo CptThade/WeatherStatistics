@@ -10,7 +10,7 @@ using WeatherStatistics.Server.Data;
 namespace WeatherStatistics.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221002221950_Initial")]
+    [Migration("20221004104858_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
