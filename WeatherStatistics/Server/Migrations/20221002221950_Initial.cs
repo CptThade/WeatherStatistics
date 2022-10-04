@@ -19,7 +19,7 @@ namespace WeatherStatistics.Server.Migrations
                     Latitude = table.Column<double>(type: "REAL", nullable: false),
                     Longitude = table.Column<double>(type: "REAL", nullable: false),
                     CStatus = table.Column<int>(type: "INTEGER", nullable: false),
-                    TimeStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    TimeStamp = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CurTemperature = table.Column<int>(type: "INTEGER", nullable: false),
                     MinTemperature = table.Column<int>(type: "INTEGER", nullable: false),
                     MaxTemperature = table.Column<int>(type: "INTEGER", nullable: false),

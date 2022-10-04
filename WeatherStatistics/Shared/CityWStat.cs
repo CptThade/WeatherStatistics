@@ -14,7 +14,7 @@
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public CityStatus CStatus { get; set; }
-        public string? TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; } = DateTime.Now;
         public int CurTemperature { get; set; }
         public int MinTemperature { get; set; }
         public int MaxTemperature { get; set; }
